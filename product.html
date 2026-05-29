@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | Borcelle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #e8aeb7;
+    --accent: #ff4b5c;
+    --bg: #fffafc;
+    --text: #2c2c2c;
+    --glass: rgba(255,255,255,0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fffafc;
+}
+
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(12px);
+    background: var(--glass);
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* SHOP HERO */
+.shop-hero {
+    height: 620px;
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('img/shop.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.shop-hero h1 {
+    font-size: 58px;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+}
+
+.shop-hero p {
+    font-size: 18px;
+}
+
+/* WHY SHOP */
+.why-shop {
+    padding: 70px 40px;
+    text-align: center;
+    background: #fff;
+}
+
+.why-shop h1,
+.collection-section h1,
+.review-section h1,
+.newsletter h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    margin-bottom: 35px;
+    color: var(--text);
+}
+
+.why-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.why-box {
+    width: 240px;
+    background: #fff7fa;
+    padding: 30px 20px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.why-box:hover {
+    transform: translateY(-8px);
+}
+
+.why-box span {
+    font-size: 38px;
+}
+
+.why-box h3 {
+    margin: 12px 0;
+}
+
+/* OFFER */
+.offer-section {
+    height: 400px;
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('img/offer.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.offer-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+}
+
+.offer-content p {
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.offer-content button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+}
+
+/* COLLECTION */
+.collection-section {
+    padding: 70px 40px;
+    text-align: center;
+    background: #fffafc;
+}
+
+.collection-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.collection-card {
+    width: 300px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.collection-card:hover {
+    transform: scale(1.04);
+}
+
+.collection-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.collection-card h3 {
+    padding: 18px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* REVIEWS */
+.review-section {
+    padding: 70px 40px;
+    text-align: center;
+    background: white;
+}
+
+.review-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.review-card {
+    width: 300px;
+    background: #fff7fa;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.review-card p {
+    font-style: italic;
+    color: #555;
+}
+
+.review-card h4 {
+    margin-top: 15px;
+    color: var(--accent);
+}
+
+/* NEWSLETTER */
+.newsletter {
+    padding: 70px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #ffe4ec, #fffafc);
+}
+
+.newsletter p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.newsletter input {
+    padding: 13px 18px;
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+}
+
+.newsletter button {
+    padding: 13px 25px;
+    border: none;
+    border-radius: 25px;
+    background: var(--accent);
+    color: white;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+@media(max-width: 768px) {
+    .offer-content h1 {
+        font-size: 34px;
+    }
+
+    .newsletter input {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .newsletter button {
+        margin-left: 0;
+    }
+}
+
+
+/* FILTER */
+.filters {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filters button {
+    margin: 5px;
+    padding: 9px 18px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filters button:hover {
+    background: #d93648;
+}
+
+/* PRODUCTS */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 30px 70px;
+}
+
+.card {
+    width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 12px 0;
+}
+
+.price {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* FOOTER */
+.footer {
+    background: #111;
+    color: #ddd;
+    padding: 60px 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    width: 220px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+}
+
+.footer-col h3 {
+    margin-bottom: 10px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin: 8px 0;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #bbb;
+}
+
+.footer-col ul li a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 35px;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.socials a {
+    margin: 0 8px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    header {
+        padding: 15px 25px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0 8px;
+    }
+
+    .shop-hero {
+        height: 450px;
+    }
+
+    .shop-hero h1 {
+        font-size: 42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 class="logo">Borcelle 🌸</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="shopnow.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="shop-hero">
+    
+</section>
+
+<!-- WHY SHOP WITH US -->
+<section class="why-shop">
+    <h1>Why Shop With Us?</h1>
+
+    <div class="why-container">
+        <div class="why-box">
+            <span>🌸</span>
+            <h3>Fresh Flowers</h3>
+            <p>Handpicked fresh flowers arranged with love and care.</p>
+        </div>
+
+        <div class="why-box">
+            <span>🚚</span>
+            <h3>Same Day Delivery</h3>
+            <p>Fast and safe delivery for your special moments.</p>
+        </div>
+
+        <div class="why-box">
+            <span>🎁</span>
+            <h3>Beautiful Packaging</h3>
+            <p>Elegant wrapping and gift-ready presentation.</p>
+        </div>
+
+        <div class="why-box">
+            <span>💖</span>
+            <h3>Made With Love</h3>
+            <p>Every bouquet is designed to bring happiness.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SPECIAL OFFER -->
+<section class="offer-section">
+    <div class="offer-content">
+        <h1>Special Flower Offer</h1>
+        <p>Get 25% off on premium bouquets and gift hampers this week.</p>
+        <a href="shopnow.html"> <button>Shop Now</button></a>
+       
+    </div>
+</section>
+
+<!-- BEST SELLING COLLECTION -->
+<section class="collection-section">
+    <h1>Best Selling Collections</h1>
+
+    <div class="collection-container">
+        <div class="collection-card">
+            <img src="img/bouquet.png">
+            <h3>Romantic Flowers</h3>
+        </div>
+
+        <div class="collection-card">
+            <img src="img/luxurybucket.png">
+            <h3>Luxury Baskets</h3>
+        </div>
+
+        <div class="collection-card">
+            <img src="img/hamper.png">
+            <h3>Gift Hampers</h3>
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+<section class="review-section">
+    <h1>Happy Customers</h1>
+
+    <div class="review-container">
+        <div class="review-card">
+            <p>“Beautiful flowers and very fresh quality. Loved the packaging!”</p>
+            <h4>— Priya Sharma</h4>
+        </div>
+
+        <div class="review-card">
+            <p>“Same day delivery was amazing. Perfect gift for my friend.”</p>
+            <h4>— Anjali Verma</h4>
+        </div>
+
+        <div class="review-card">
+            <p>“The bouquet looked premium and elegant. Highly recommended.”</p>
+            <h4>— Riya Mehta</h4>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+    <h1>Subscribe For Flower Updates</h1>
+    <p>Get latest offers, new bouquets and festival discounts.</p>
+
+    <div>
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+    </div>
+</section>
+
+
+
+
+
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h2 class="footer-logo">Borcelle 🌸</h2>
+            <p>Delivering fresh flowers with love and elegance for every occasion.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index">Home</a></li>
+                <li><a href="shop">Shop</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Services</h3>
+            <ul>
+                <li>Same Day Delivery</li>
+                <li>Custom Bouquets</li>
+                <li>Event Decoration</li>
+                <li>Gift Packaging</li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contact</h3>
+            <p>Email: borcelle@flowers.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Location: India</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="socials">
+            <a href="#">🌐</a>
+            <a href="#">📷</a>
+            <a href="#">🐦</a>
+        </div>
+        <p>© 2026 Borcelle Flower Shop | All Rights Reserved</p>
+    </div>
+</footer>
+
+<script>
+function filterProducts(type) {
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (type === "all" || card.dataset.type === type) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+document.getElementById("search").addEventListener("keyup", function () {
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let name = card.querySelector("h3").innerText.toLowerCase();
+
+        if (name.includes(value)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borcelle Flower Shop</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+
+/* ROOT COLORS */
+:root {
+    --primary: #e8aeb7;
+    --accent: #ff4b5c;
+    --bg: #fffafc;
+    --text: #2c2c2c;
+    --glass: rgba(255,255,255,0.6);
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 240, 245, 0.682)),
+        url('img/image8.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+}
+
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(12px);
+    background: var(--glass);
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+}
+
+/* underline animation */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* BOUQUET SECTION */
+.bouquets {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.bouquet-card {
+    width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.bouquet-card:hover {
+    transform: translateY(-12px) scale(1.04);
+}
+
+.bouquet-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* TAG BADGE */
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ff4b5c;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+.bouquet-card h3 {
+    margin-top: 10px;
+    font-family: 'Playfair Display';
+}
+
+.bouquet-card p {
+    color: #ff4b5c;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* underline animation */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+/* HERO SLIDER */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.slide {
+      position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* smooth + GPU friendly */
+    will-change: opacity;
+}
+
+/* ACTIVE SLIDE */
+.slide.active {
+    opacity: 1;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.overlay h2 {
+    font-family: 'Playfair Display';
+    font-size: 55px;
+}
+
+.overlay p {
+    margin-top: 10px;
+}
+
+/* BUTTON POSITION */
+.hero-btn {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 25px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* FLOWER TYPES */
+/* FLOWER TYPES SECTION FIX */
+.section {
+    padding: 80px 40px;
+    text-align: center; /* ensures heading is centered */
+}
+
+/* TITLE */
+.section h2 {
+    font-family: 'Playfair Display';
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+}
+
+/* OPTIONAL: underline for elegance */
+.section h2::after {
+    content: "";
+    width: 60px;
+    height: 3px;
+    background: #ff4b5c;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* FLOWER GRID */
+.flower-types {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.flower-card {
+    width: 240px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.flower-card:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+.flower-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.flower-card h3 {
+    margin-top: 10px;
+    font-family: 'Playfair Display';
+}
+
+.flower-card p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* GIFTS SECTION */
+.gifts {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.gift-card {
+    width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.gift-card:hover {
+    transform: translateY(-12px) scale(1.03);
+}
+
+/* IMAGE */
+.gift-img {
+    position: relative;
+}
+
+.gift-img img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* TAG */
+.gift-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4b5c;
+    color: white;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+/* TEXT */
+.gift-card h3 {
+    margin-top: 10px;
+    font-family: 'Playfair Display';
+}
+
+.gift-card p {
+    color: #ff4b5c;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* BUTTON */
+.gift-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4b5c;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gift-btn:hover {
+    background: #e63b4c;
+}
+
+/* CARD */
+.card {
+    width: 260px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.4s;
+}
+.card:hover {
+    transform: translateY(-12px) scale(1.03);
+}
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 10px;
+}
+.card p {
+    color: var(--accent);
+}
+
+/* ABOUT */
+/* ABOUT SECTION */
+.about {
+    padding: 80px 40px;
+    background: linear-gradient(120deg,#fff,#ffeef0);
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* IMAGE */
+.about-img img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* TEXT */
+.about-text h2 {
+    font-family: 'Playfair Display';
+    margin-bottom: 15px;
+    font-size: 32px;
+}
+
+.about-text p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.footer {
+    background: #111;
+    color: #ddd;
+    padding: 60px 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    width: 220px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display';
+    margin-bottom: 10px;
+}
+
+.footer-col h3 {
+    margin-bottom: 10px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin: 8px 0;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #bbb;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: white;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+/* BOTTOM */
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.socials {
+    margin-bottom: 10px;
+}
+
+.socials a {
+    margin: 0 10px;
+    font-size: 18px;
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    color: white;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    header {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .hero h2 {
+        font-size: 40px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <h1 class="logo">Borcelle 🌸</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="shopnow.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="slides">
+
+    <!-- Slide 1 -->
+    <div class="slide active"
+        style="background-image:url('img/bs1.png')">
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide"
+        style="background-image:url('img/bs2.png')">
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide"
+        style="background-image:url('img/bs3.png')">
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide"
+        style="background-image:url('img/bs4.png')">
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide"
+        style="background-image:url('img/bs5.png')">
+    </div>
+
+</div>
+
+    <!-- BUTTON -->
+    <button class="btn hero-btn">Shop Now</button>
+
+</section>
+
+<!-- FLOWER TYPES -->
+<section class="section">
+<h2>Types of Flowers</h2>
+
+<div class="flower-types">
+
+    <div class="flower-card wow animate__fadeInUp">
+        <img src="img/rose.png">
+        <h3>Roses</h3>
+        <p>Symbol of love and romance</p>
+    </div>
+
+    <div class="flower-card wow animate__fadeInUp" data-wow-delay="0.2s">
+        <img src="img/sunflower.png">
+        <h3>Sunflowers</h3>
+        <p>Bright and cheerful blooms</p>
+    </div>
+
+    <div class="flower-card wow animate__fadeInUp" data-wow-delay="0.4s">
+        <img src="img/lily.png">
+        <h3>Lilies</h3>
+        <p>Elegant and fragrant flowers</p>
+    </div>
+
+    <div class="flower-card wow animate__fadeInUp" data-wow-delay="0.6s">
+        <img src="img/tulip.png">
+        <h3>Tulips</h3>
+        <p>Perfect for spring vibes</p>
+    </div>
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="about">
+
+    <div class="about-container">
+
+        <!-- LEFT IMAGE -->
+        <div class="about-img wow animate__fadeInLeft">
+            <img src="img/in1.png" alt="Flower Shop">
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="about-text wow animate__fadeInRight">
+            <h2>About Us</h2>
+            <p>
+                At Borcelle Flower Shop, we believe flowers are more than just gifts —
+                they are expressions of love, joy, and emotion.
+            </p>
+            <p>
+                Our expert florists carefully craft each bouquet using the freshest
+                blooms, ensuring beauty and elegance in every arrangement.
+            </p>
+            <p>
+                Whether it's a wedding, birthday, or a special surprise, we bring
+                your moments to life with stunning floral designs.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BOUQUET SECTION -->
+<section class="section">
+<h2>Our Bouquets</h2>
+
+<div class="bouquets">
+
+    <div class="bouquet-card wow animate__fadeInUp">
+    <img src="img/orchidb.png">
+    <div class="tag">Luxury</div>
+    <h3>Royal Orchid Bouquet</h3>
+    <p>₹1299</p>
+</div>
+
+<div class="bouquet-card wow animate__fadeInUp" data-wow-delay="0.2s">
+    <img src="img/mixedb.png">
+    <div class="tag">Trending</div>
+    <h3>Mixed Flower Bouquet</h3>
+    <p>₹999</p>
+</div>
+
+<div class="bouquet-card wow animate__fadeInUp" data-wow-delay="0.4s">
+    <img src="img/lavenderb.png">
+    <div class="tag">Fresh</div>
+    <h3>Lavender Bliss Bouquet</h3>
+    <p>₹799</p>
+</div>
+
+<div class="bouquet-card wow animate__fadeInUp" data-wow-delay="0.6s">
+    <img src="img/poeny.png">
+    <div class="tag">Premium</div>
+    <h3>Peony Dream Bouquet</h3>
+    <p>₹1399</p>
+</div>
+</div>
+</section>
+
+<!-- GIFTS SECTION -->
+<section class="section">
+<h2>Gift Collection</h2>
+
+<div class="gifts">
+
+    <div class="gift-card wow animate__fadeInUp">
+        <div class="gift-img">
+            <img src="img/box1.png">
+            <span class="gift-tag">New</span>
+        </div>
+        <h3>Flower Gift Box</h3>
+        <p>₹799</p>
+        <button class="gift-btn">View Details</button>
+    </div>
+
+    <div class="gift-card wow animate__fadeInUp" data-wow-delay="0.2s">
+        <div class="gift-img">
+            <img src="img/box2.png">
+            <span class="gift-tag">Popular</span>
+        </div>
+        <h3>Chocolate & Roses Combo</h3>
+        <p>₹999</p>
+        <button class="gift-btn">View Details</button>
+    </div>
+
+    <div class="gift-card wow animate__fadeInUp" data-wow-delay="0.4s">
+        <div class="gift-img">
+            <img src="img/box3.png">
+            <span class="gift-tag">Best Seller</span>
+        </div>
+        <h3>Teddy & Flower Basket</h3>
+        <p>₹1199</p>
+        <button class="gift-btn">View Details</button>
+    </div>
+
+    <div class="gift-card wow animate__fadeInUp" data-wow-delay="0.6s">
+        <div class="gift-img">
+            <img src="img/box4.png">
+            <span class="gift-tag">Premium</span>
+        </div>
+        <h3>Luxury Gift Hamper</h3>
+        <p>₹1499</p>
+        <button class="gift-btn">View Details</button>
+    </div>
+
+</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col">
+        <h2 class="footer-logo">Borcelle 🌸</h2>
+        <p>Delivering fresh flowers with love and elegance for every occasion.</p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+            <li>Same Day Delivery</li>
+            <li>Custom Bouquets</li>
+            <li>Event Decoration</li>
+            <li>Gift Packaging</li>
+        </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+        <h3>Contact</h3>
+        <p>Email: borcelle@flowers.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: India</p>
+    </div>
+
+</div>
+
+<!-- SOCIAL -->
+<div class="footer-bottom">
+    <div class="socials">
+        <a href="#">🌐</a>
+        <a href="#">📷</a>
+        <a href="#">🐦</a>
+    </div>
+    <p>© 2026 Borcelle Flower Shop | All Rights Reserved</p>
+</div>
+
+</footer>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- WOW -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+<script>
+
+// SLIDER (optimized)
+const slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlide(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    slides[i].classList.add("active");
+}
+
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+}
+
+// run slider
+if (slides.length > 0) {
+    showSlide(index);
+    setInterval(nextSlide, 5000); // slower = smoother
+}
+
+gsap.from(".logo", { y: -50, opacity: 0, duration: 1 });
+gsap.from("nav a", { y: -50, opacity: 0, duration: 1, stagger: 0.2 });
+
+
+
+</script>
+
+</body>
+</html>

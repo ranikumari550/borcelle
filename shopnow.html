@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Now | Borcelle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#e8aeb7;
+    --accent:#ff4b5c;
+    --bg:#fffafc;
+    --text:#2c2c2c;
+    --glass:rgba(255,255,255,0.7);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* FILTER */
+.filters {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filters button {
+    margin: 5px;
+    padding: 9px 18px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filters button:hover {
+    background: #d93648;
+}
+
+/* PRODUCTS */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 30px 70px;
+}
+
+.card {
+    width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 12px 0;
+}
+
+.price {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+}
+
+/* NAVBAR */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 60px;
+    position:sticky;
+    top:0;
+    background:var(--glass);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #eee;
+    z-index:1000;
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+}
+
+nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:var(--text);
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:var(--accent);
+    left:0;
+    bottom:-5px;
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    height:500px;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url('img/shopnow.png') center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:60px;
+    font-family:'Playfair Display',serif;
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:18px;
+}
+
+/* PRODUCTS */
+
+.section-title{
+    text-align:center;
+    margin:70px 0 40px;
+}
+
+.section-title h1{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+}
+
+.products{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:0 40px 80px;
+}
+
+.card{
+    width:290px;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card h3{
+    font-family:'Playfair Display',serif;
+    margin-bottom:10px;
+}
+
+.price{
+    color:var(--accent);
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.desc{
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.btns{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.btn{
+    flex:1;
+    padding:11px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:500;
+}
+
+.cart-btn{
+    background:var(--accent);
+    color:white;
+}
+
+.buy-btn{
+    background:#111;
+    color:white;
+}
+
+/* SHOP TITLE */
+.shop-header {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.shop-header h1 {
+    font-size: 42px;
+    font-family: 'Playfair Display', serif;
+}
+
+.shop-header p {
+    color: #666;
+}
+
+/* SEARCH */
+.search-box {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-box input {
+    padding: 12px 18px;
+    width: 280px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* OFFER */
+
+.offer{
+    margin:0 40px 80px;
+    border-radius:25px;
+    overflow:hidden;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url('img/discount.png') center/cover no-repeat;
+    height:350px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.offer h1{
+    font-size:50px;
+    font-family:'Playfair Display',serif;
+}
+
+.offer p{
+    margin:15px 0;
+    font-size:18px;
+}
+
+.offer button{
+    padding:13px 30px;
+    border:none;
+    border-radius:30px;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#111;
+    color:#ddd;
+    padding:60px 40px 20px;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.footer-col{
+    width:220px;
+}
+
+.footer-logo{
+    font-family:'Playfair Display',serif;
+    margin-bottom:10px;
+}
+
+.footer-col h3{
+    margin-bottom:12px;
+}
+
+.footer-col ul{
+    list-style:none;
+}
+
+.footer-col ul li{
+    margin:8px 0;
+}
+
+.footer-col ul li a{
+    text-decoration:none;
+    color:#bbb;
+}
+
+.footer-col ul li a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:35px;
+    border-top:1px solid #333;
+    padding-top:18px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+    padding:15px 20px;
+    flex-direction:column;
+    gap:10px;
+}
+
+.hero{
+    height:400px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.offer h1{
+    font-size:35px;
+}
+
+.products{
+    padding:0 20px 60px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+    <h1 class="logo">Borcelle 🌸</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="shopnow.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+</section>
+
+<!-- PRODUCTS -->
+
+<div class="section-title">
+    <h1>Featured Products</h1>
+</div>
+
+<section class="products">
+
+<div class="card">
+
+<img src="img/rosebo.png">
+
+<div class="card-content">
+
+<h3>Rose Bouquet</h3>
+
+<p class="price">₹499</p>
+
+<p class="desc">
+Fresh red roses wrapped in premium paper with elegant ribbon decoration.
+</p>
+
+<div class="btns">
+<button class="btn cart-btn">Add Cart</button>
+<button class="btn buy-btn">Buy Now</button>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+
+<img src="img/lilyb.png">
+
+<div class="card-content">
+
+<h3>Lily Basket</h3>
+
+<p class="price">₹699</p>
+
+<p class="desc">
+Luxury white lily basket designed beautifully for special celebrations.
+</p>
+
+<div class="btns">
+<button class="btn cart-btn">Add Cart</button>
+<button class="btn buy-btn">Buy Now</button>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+
+<img src="img/gifth.png">
+
+<div class="card-content">
+
+<h3>Gift Hamper</h3>
+
+<p class="price">₹1199</p>
+
+<p class="desc">
+Premium chocolates, flowers and spa essentials in elegant gift hamper.
+</p>
+
+<div class="btns">
+<button class="btn cart-btn">Add Cart</button>
+<button class="btn buy-btn">Buy Now</button>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+
+<img src="img/sunf.png">
+
+<div class="card-content">
+
+<h3>Sunflower Mix</h3>
+
+<p class="price">₹599</p>
+
+<p class="desc">
+Bright sunflower bouquet with fresh seasonal flowers and soft wrapping.
+</p>
+
+<div class="btns">
+<button class="btn cart-btn">Add Cart</button>
+<button class="btn buy-btn">Buy Now</button>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<section class="shop-header">
+    <h1>Our Shop</h1>
+    <p>Choose your favorite flowers & gifts</p>
+</section>
+
+
+<div class="search-box">
+    <input type="text" id="search" placeholder="Search flowers...">
+</div>
+
+<div class="filters">
+
+    <button onclick="filter('all')">All</button>
+    <button onclick="filter('rose')">Roses</button>
+    <button onclick="filter('lily')">Lilies</button>
+    <button onclick="filter('gift')">Gifts</button>
+    <button onclick="filter('orchid')">Orchids</button>
+    <button onclick="filter('lavender')">Lavender</button>
+    <button onclick="filter('tulip')">Tulips</button>
+    <button onclick="filter('peony')">Peonies</button>
+    <button onclick="filter('teddy')">Teddy</button>
+    <button onclick="filter('chocolate')">Chocolate</button>
+
+</div>
+
+
+<div class="products" id="productList">
+
+    <!-- ROSE -->
+    <div class="card" data-type="rose">
+        <img src="img/roses.jpg">
+        <h3>Rose Bouquet</h3>
+        <p class="price">₹499</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- LILY -->
+    <div class="card" data-type="lily">
+        <img src="img/lilys.png">
+        <h3>Lily Basket</h3>
+        <p class="price">₹599</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- GIFT -->
+    <div class="card" data-type="gift">
+        <img src="img/gifts.png">
+        <h3>Gift Hamper</h3>
+        <p class="price">₹999</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- SUNFLOWER -->
+    <div class="card" data-type="sunflower">
+        <img src="img/sunflowers.png">
+        <h3>Sunflower Mix</h3>
+        <p class="price">₹399</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- ORCHID -->
+    <div class="card" data-type="orchid">
+        <img src="img/orchids.png">
+        <h3>Royal Orchid Bouquet</h3>
+        <p class="price">₹899</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- LAVENDER -->
+    <div class="card" data-type="lavender">
+        <img src="img/lavenders.png">
+        <h3>Lavender Bliss</h3>
+        <p class="price">₹749</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- TULIP -->
+    <div class="card" data-type="tulip">
+        <img src="img/tulips.png">
+        <h3>Tulip Elegance</h3>
+        <p class="price">₹849</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- PEONY -->
+    <div class="card" data-type="peony">
+        <img src="img/peonys.png">
+        <h3>Peony Dream</h3>
+        <p class="price">₹1099</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- TEDDY -->
+    <div class="card" data-type="teddy">
+        <img src="img/teddy.png">
+        <h3>Teddy Flower Basket</h3>
+        <p class="price">₹1299</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- CHOCOLATE -->
+    <div class="card" data-type="chocolate">
+        <img src="img/choco.png">
+        <h3>Chocolate & Roses Combo</h3>
+        <p class="price">₹1399</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- WEDDING -->
+    <div class="card" data-type="wedding">
+        <img src="img/wedding.png">
+        <h3>Wedding Floral Set</h3>
+        <p class="price">₹2499</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- BOX -->
+    <div class="card" data-type="box">
+        <img src="img/luxury.png">
+        <h3>Luxury Flower Box</h3>
+        <p class="price">₹1599</p>
+        <button class="btn">Add to Cart</button>
+    </div>
+
+</div>
+
+<!-- OFFER -->
+
+<section class="offer">
+
+<div>
+
+<h1>20% OFF</h1>
+
+<p>Special discounts on premium bouquets and gift collections</p>
+
+<button>Explore Offers</button>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-col">
+<h2 class="footer-logo">Borcelle 🌸</h2>
+<p>Delivering fresh flowers with love and elegance.</p>
+</div>
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</div>
+
+<div class="footer-col">
+<h3>Services</h3>
+
+<ul>
+<li>Same Day Delivery</li>
+<li>Custom Bouquets</li>
+<li>Gift Packaging</li>
+<li>Event Decoration</li>
+</ul>
+
+</div>
+
+<div class="footer-col">
+<h3>Contact</h3>
+
+<p>Email: borcelle@flowers.com</p>
+<p>Phone: +91 98765 43210</p>
+<p>India</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Borcelle Flower Shop | All Rights Reserved</p>
+</div>
+
+</footer>
+
+
+<script>
+function filterProducts(type) {
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (type === "all" || card.dataset.type === type) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+document.getElementById("search").addEventListener("keyup", function () {
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let name = card.querySelector("h3").innerText.toLowerCase();
+
+        if (name.includes(value)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
